@@ -106,5 +106,29 @@ approach : we need to reverse queue inorder implement LIFO. (but this makes push
                       return temp;
                      }
                   }
-             
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Next Greater Element(NGE) for every element in a given array.
+   Hints:
+    - NGE of rightmost element in array is -1
+    - NGE of all the element in an array sorted in descending order is -1.
+    
+   Approach1: 2 loop - o(n^2) time
+    - Iterate the array from i = 0 to n-1 elements
+      - Iterate the array from j= i+1 to n-2 elements
+          - if a[i]<a[j] - print NGE of A[i] is a[j] and break inner loop
+          - else continue to increment the j
+      - print NGE of a[i] is -1 and increment the i.
+    print NGE of a[n-1] is -1.
+    
+    Approach2: Using Stack 
+    if the next value is not greater than current value we still search for next value that is greater than both previous and current value, using a stack to track the last and last before elements will be easy.
+    - push the first element in the array to stack
+    - iterate through the array for i =1 to n-1
+       - check until the top element in stack is lesser than the current element in the array 
+         - pop the top element in stack and print its NGE as current element and break the current
+       - push the current element to stack( that becomes the new top) and i is incremented
+    - if there are any elements left in stack (means that those elements does not have NGE) are printed as -1.
+   
+    
+ 
 
