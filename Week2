@@ -41,7 +41,40 @@ push the element to stack1 -O(1)
 Dequeue
 Using function call stack we can store the current top element of the function call and recursively call the dequeue operation till we hit element at the bottom of stack and pop that element and return. Push the current call's top element back into stack1. - O(n) ( as we pop and push n-1 elements)
 
-
-
-
+5. Implement Stack using Queues:
+Ask question : what are the elements in stack? Integer
+               whether we need to implement Queue(we can use a LinkedList) or use Java datastructure queue (default is array)
+approach : we need to reverse queue inorder implement LIFO. (but this makes push element difficult)
+           we can have two queue.
+           
+           push is expensive
+             - push(x) - O(n) time
+               - add to q2 - this is the new top
+               - if q1 is not empty - pop all elements from q1 to q2 and swap q1 with q2 (q1 has all elements and q2 is empty)
+              
+             - pop() - O(1) time
+               - check if q1 is empty - throw underflow error
+               - remove top element from q1
+               
+               public Stack<Integer>{
+                  Queue<Integer> q1 = new Queue<>();
+                  Queue<Integer> q2 = new Queue<>();
+                  
+                  push(Integer i){
+                    q2.push(i);
+                    while(!q1.isEmpty()){
+                      q2.push(q1.pop());
+                    }
+                    Queue<Integer> temp = q1;
+                    q1 = q2;
+                    q2 = temp;
+                  }
+                  
+                  int pop(){
+                    if(q1.isEmpty()) throw "Underflow";
+                    return q1.pop();
+                  }
+                  
+           pop is expensive
+             
 
