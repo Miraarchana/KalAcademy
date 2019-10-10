@@ -1,0 +1,31 @@
+Week 2 - Stacks and Queues
+Queue : FIFO
+Stack : LIFO
+ - Both can be implemented using array and linked list
+ - No indexing, we can access only on top and bottom elements for queue and only top for stack
+
+Check for implementing Queue using array in referencesource.microsoft.com for C#
+
+Week 2 Assessments:
+
+4. Implement Queue using Stacks
+
+- for implementing Queue, enqueue must add element to the top of Stack and dequeue must remove element from bottom of stack.
+
+Approach1: Using 2 Stacks (Enqueue does the work of maintaing the LIFO pointers)
+enqueue:
+  - If stack1 is empty- push element to stack1
+  - If stack1 is not empty
+    - copy all elements from stack1 to stack2
+    - push new element to stack1
+    - push all elements back from stack2 to stack1
+dequeue:
+  - If stack1 is empty - throw underflow error
+  - else pop element on top from stack1
+Time complexity : Enqueue operation takes O(n) + O (n) as it moves all the element twice. dequeue is o(1)
+    
+    
+
+Approach2: Using 2 Stacks (Dequeue does the work of maitaining the LIFO pointers)
+
+Approach1: Using a user Stack and function call stack
