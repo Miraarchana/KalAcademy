@@ -7,7 +7,7 @@ Stack : LIFO
 Check for implementing Queue using array in referencesource.microsoft.com for C#
 
 Week 2 Assessments:
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4. Implement Queue using Stacks
 
 - for implementing Queue, enqueue must add element to the top of Stack and dequeue must remove element from bottom of stack.
@@ -40,7 +40,7 @@ enqueue:
 push the element to stack1 -O(1)
 Dequeue
 Using function call stack we can store the current top element of the function call and recursively call the dequeue operation till we hit element at the bottom of stack and pop that element and return. Push the current call's top element back into stack1. - O(n) ( as we pop and push n-1 elements)
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5. Implement Stack using Queues:
 Ask question : what are the elements in stack? Integer
                whether we need to implement Queue(we can use a LinkedList) or use Java datastructure queue (default is array)
@@ -74,7 +74,37 @@ approach : we need to reverse queue inorder implement LIFO. (but this makes push
                     if(q1.isEmpty()) throw "Underflow";
                     return q1.pop();
                   }
-                  
+                 }
            pop is expensive
+           enqueue -O(1)
+            - push the element to Q1
+           dequeue - o(n) time
+            - if q1 is empty = throw an error
+            - if not empty - move all elements except the last element from q1 to q2
+               - pop the element from q1
+               - swap q1 and q2
+               - return the element popped from q1.
+               
+                public Stack<Integer>{
+                  Queue<Integer> q1 = new Queue<>();
+                  Queue<Integer> q2 = new Queue<>();
+                  
+                  push(Integer i){
+                    q1.push(x);
+                  }
+                  
+                  int pop(){
+                    if(q1.isEmpty()) throw "Underflow";
+                    else{
+                      while(q1.size()!=1){
+                        q2.push(q1.pop());
+                      }
+                      int temp = q1.pop(); //pop the last element in q1 after moving rest of the element to q2
+                      Queue<Integer> q = q1;
+                      q1=q2;
+                      q2=q;
+                      return temp;
+                     }
+                  }
              
 
