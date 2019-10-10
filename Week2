@@ -21,11 +21,27 @@ enqueue:
     - push all elements back from stack2 to stack1
 dequeue:
   - If stack1 is empty - throw underflow error
-  - else pop element on top from stack1
+  - else pop element on top from stack1 and return
 Time complexity : Enqueue operation takes O(n) + O (n) as it moves all the element twice. dequeue is o(1)
     
-    
-
 Approach2: Using 2 Stacks (Dequeue does the work of maitaining the LIFO pointers)
+enqueue: 
+ -push element to stack1
+dequeue:
+- If stack1 is empty && stack2 is empty - throw under flow error
+- If stack1 is empty && stack2 is not empty - pop top element in stack2 and return
+- else if stack1 is not empty && stack2 is empty 
+  - push all elements from stack1 to stack2
+  - pop the top element in stack2 and return it
+Time complexity : Enqueue operation takes O(1). dequeue is o(1) and on worst cases O(n) where all elements are copied to stack2 from stack1.
+    
+Approach3: Using a user Stack and function call stack
+enqueue:
+push the element to stack1 -O(1)
+Dequeue
+Using function call stack we can store the current top element of the function call and recursively call the dequeue operation till we hit element at the bottom of stack and pop that element and return. Push the current call's top element back into stack1. - O(n) ( as we pop and push n-1 elements)
 
-Approach1: Using a user Stack and function call stack
+
+
+
+
