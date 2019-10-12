@@ -20,11 +20,41 @@ Approach1: Counter approach o(n) time
  - if value of openCounter < closeCounter, there is (closeCOunter-openCounter) openCounters missing
 limitation: if the expression contains more than one set of paranthesis like [] or{} we cannot use this approach
 
-Approach2: Using Stack
+Approach2: Using Stack - O(n) time , o(n) space
+-declare a Stack<Charachter>
+-iterate through the character in the expression
+  - if char is '(' or '[' or '{' - push it to the stack
+  -Else if the char is ')' or ']' or'}' pop the element from stack and check if the paranthesis matches(corresponding open paranthesis) the char.
+   -if matches, continue
+   -else print the missing paranthesis.
+- If there are still paranthesis left in stack, pop and print its close paranthesis as missing
+
+    void findMissingParanthesis(String expression){
+         Stack<Character> st = new Stack<>();
+         Char[] ch  = expression.toCharArray();
+         for(char c: ch){
+           if(c=='(' || c=='[' || c=='{')
+             st.push(c);
+           else if(c==')' || c==']' || c=='}'){
+             if(!st.isEmpty() && isMatching(st.peek(),c))
+                st.pop();
+             else
+                print("missing paranthesis" + getMissing(c));
+           }
+           while(!st.isEmpty()){
+               print("missing paranthesis"+getMissing(st.pop());
+           }
+         }
+     }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Evaluate an expression given only single digits and only 2 operators * and +
 
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 4. Implement Queue using Stacks
 
 - for implementing Queue, enqueue must add element to the top of Stack and dequeue must remove element from bottom of stack.
