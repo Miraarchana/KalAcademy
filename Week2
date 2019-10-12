@@ -48,11 +48,78 @@ Approach2: Using Stack - O(n) time , o(n) space
      }
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Evaluate an expression given only single digits and only 2 operators * and +
-
-
-
+Assumption: Expression is Infix notation as Reverse Polish Notation will be specified.
+Approach: ShuntingYard algorithm
+https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+- The processing time of infix notation is slower compared to Postfix and Prefix(because of additional processing for paranthesis).
+- Shunting Yard algorithm converts a infix notation to postfix and maintains a stack for operator.
+- This approach 2 stacks are used one for operator and anothe one for operand as we need to evaluate the expression on run.
+Algorithm:
+ - Tokenize the expression
+ - Iterate through the tokens
+   - if the token is
+     -number
+       -push it to operand stack
+     -left paranthesis
+       -push it to operator stack
+     -right paranthesis
+       -while top element of the stack is not '(' evaluate all expression inside the parantheses
+         -pop operator from opStack
+         -pop value from operand stack twice
+         -apply the operation and push result to operand stack
+       - pop '(' from opStack and discard
+     -operator
+        -while the opStack is not empty & top operator in stack has greater precedence thant the current token operator
+          -pop operator from opStack
+         -pop value from operand stack twice
+         -apply the operation and push result to operand stack
+        - push the current operator to opStack
+  - while opStack is not empty
+    -pop operator from opStack
+    -pop value from operand stack twice
+    -apply the operation and push result to operand stack
+  - If opStack is empty
+    - print the top element in operand stack as result
+    
+evaluate(String expression) -o(n)
+    void evaluate(String expression){
+      char[] token = expression.toCharArray();
+      Stack<Character> opStack = new Stack<>();
+      Stack<Integer> operands = new Stack<>();
+      for(int i=0; i<token.length;i++){
+        if(token[i]<='0' && token[i] <='9)
+          operands.push(Integer.parseInt(token[i]);
+        else if (token[i] =='(')
+          opStack.push(token[i]);
+        else if(token[i] ==')')
+        {
+          while(opStack.peek()!='(')
+            operands.push(applyOp(operands.pop(),operands.pop(),opStack.pop()));
+          opStack.pop();
+        }
+        else if(token[i]=='*' || token[i]=='+')
+        {
+          while(!opStack.isEmpty() && hasPrecedence(opStack.peek(),token[i])
+            operands.push(applyOp(operands.pop(),operands.pop(),opStack.pop()));
+          opStack.push(token[i]);
+        }
+      }
+      while(!opStacj.isEmpty()){
+          operands.push(applyOp(operands.pop(),operands.pop(),opStack.pop()));
+      }
+      return operands.pop();
+    }
+boolean hasPrecedence(op1,op2) -o(1)
+    boolean hasPrecedence(op1,op2){
+      if(op1 == '*' && op2=='+')
+       return true;
+      return false;
+    }
+int applyOp(opr1,opr2,op) -o(1)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+3. Reverse a stack and put the reversed value back in the same stack. You can use only one
+other stack and a temp variable.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 4. Implement Queue using Stacks
