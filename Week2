@@ -7,6 +7,23 @@ Stack : LIFO
 Check for implementing Queue using array in referencesource.microsoft.com for C#
 
 Week 2 Assessments:
+1. Find the missing paranthesis in the given expression 2*(3+5(sabcd)
+
+Expression string can be converted to a character array and then look for the missing paranthesis
+Approach1: Counter approach o(n) time
+ - check every character in the string for left paranthesis or right paranthesis
+   - if the char is '(' - increment openCounter
+   - else if the  char is ')' - increment closeCounter
+   - else if it is a number or variable continue checking the next char
+ - if value of openCounter == closeCounter, there is no missing paranthesis
+ - if value of openCounter > closeCounter, there is (openCounter-closeCounter) closeCounters missing
+ - if value of openCounter < closeCounter, there is (closeCOunter-openCounter) openCounters missing
+limitation: if the expression contains more than one set of paranthesis like [] or{} we cannot use this approach
+
+Approach2: Using Stack
+
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4. Implement Queue using Stacks
 
