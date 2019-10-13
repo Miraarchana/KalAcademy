@@ -119,6 +119,27 @@ int applyOp(opr1,opr2,op) -o(1)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3. Reverse a stack and put the reversed value back in the same stack. You can use only one
 other stack and a temp variable.
+Approach1: o(n^2) time with o(n) space
+   traverse to bottom of stack and start reversing from end.
+   - have count as variable assigned to size of the input stack1.
+   - create stack2
+   - while count is not equal to 0 (count is used to track number of pop to be done on st1 for next cycle)
+     -pop the top element in stack1 to a temp variable
+     -while stack1 is not empty and count is greater than 0
+      -push the next top element in stack1 to stack2 and decrement the count
+     - push the temp back to the stack that is empty now and set count to st2.size()-1
+     -push back elements from st2 to st1.
+    -return st1.
+ Approach2: reverse the stack using another stack and swap values - O(n) time
+     static Stack<Integer> reverseStack(Stack<Integer> st1){
+      Stack<Integer> st2 = new Stack<Integer>();
+      while(!st1.isEmpty()) {
+       st2.push(st1.pop());
+      }
+      System.out.println(st2.peek());
+      return st2;
+     }
+     
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -126,7 +147,7 @@ other stack and a temp variable.
 
 - for implementing Queue, enqueue must add element to the top of Stack and dequeue must remove element from bottom of stack.
 
-Approach1: Using 2 Stacks (Enqueue does the work of maintaing the LIFO pointers)
+Approach1: Using 2 Stacks (Enqueue does the work of maintaing the LIFO pointers - expensive enqueue)
 enqueue:
   - If stack1 is empty- push element to stack1
   - If stack1 is not empty
@@ -161,7 +182,7 @@ Ask question : what are the elements in stack? Integer
 approach : we need to reverse queue inorder implement LIFO. (but this makes push element difficult)
            we can have two queue.
            
-           push is expensive
+        app1: push is expensive
              - push(x) - O(n) time
                - add to q2 - this is the new top
                - if q1 is not empty - pop all elements from q1 to q2 and swap q1 with q2 (q1 has all elements and q2 is empty)
@@ -189,7 +210,8 @@ approach : we need to reverse queue inorder implement LIFO. (but this makes push
                     return q1.pop();
                   }
                  }
-           pop is expensive
+          
+       app2: pop is expensive
            enqueue -O(1)
             - push the element to Q1
            dequeue - o(n) time
@@ -234,15 +256,28 @@ approach : we need to reverse queue inorder implement LIFO. (but this makes push
       - print NGE of a[i] is -1 and increment the i.
     print NGE of a[n-1] is -1.
     
-    Approach2: Using Stack 
+    Approach2: Using Stack (addind index to stack) - o(n) time, o(n) space
     if the next value is not greater than current value we still search for next value that is greater than both previous and current value, using a stack to track the last and last before elements will be easy.
-    - push the first element in the array to stack
-    - iterate through the array for i =1 to n-1
-       - check until the top element in stack is lesser than the current element in the array 
-         - pop the top element in stack and print its NGE as current element and break the current
-       - push the current element to stack( that becomes the new top) and i is incremented
-    - if there are any elements left in stack (means that those elements does not have NGE) are printed as -1.
+    - iterate through the array for i =0 to n-1
+       - check until the value in top element index in stack is lesser than the current element in the array 
+         - pop the top element index and print its NGE as current element and break the current
+       - push the current elemen tindex to stack( that becomes the new top) and i is incremented
+    - if there are any element's index left in stack (means that those elements does not have NGE) are printed as -1.
    
-    
- 
+      int[]  findNGE(int[] nums){
+        int[] result = new int[nums.length];
+        Stack<Integer> stack = new Stack<>();
+        for(int i=0; i<nums.length;i++){
+           while(!stack.isEmpty() &&nums[stack.peek()] < nums[i])
+            {
+              result[stack.pop()] = nums[i];
+              break;
+            }
+           stack.push(i);
+        }
+        while(!stack.isEmpty()){
+           result[stack.pop()] =-1;
+        }
+      return result;
+     }
 
