@@ -158,6 +158,30 @@ dequeue:
   - If stack1 is empty - throw underflow error
   - else pop element on top from stack1 and return
 Time complexity : Enqueue operation takes O(n) + O (n) as it moves all the element twice. dequeue is o(1)
+     public class UserQueue{
+         Stack<Integer> stack1 = new Stack<>();
+         Stack<Integer> stack2 = new Stack<>();
+         public void enqueue(int x){
+             if(stack1.isEmpty())
+                stack1.push(x);
+             else{
+                while(!stack1.isEmpty()){
+                  stack2.push(stack1.pop());
+                }
+                stack1.push(x);
+                while(!stack2.isEmpty())
+                  stack1.push(stack2.pop());
+             }
+         }
+         
+         public int dequeue(){
+            if(stack1.isEmpty()) 
+              print("Stack underflow");
+              return -1;
+            else
+              return stack1.pop();
+         }
+     }
     
 Approach2: Using 2 Stacks (Dequeue does the work of maitaining the LIFO pointers)
 enqueue: 
@@ -170,11 +194,35 @@ dequeue:
   - pop the top element in stack2 and return it
 Time complexity : Enqueue operation takes O(1). dequeue is o(1) and on worst cases O(n) where all elements are copied to stack2 from stack1.
     
+     public class UserQueue{
+         Stack<Integer> stack1 = new Stack<>();
+         Stack<Integer> stack2 = new Stack<>();
+         public void enqueue(int x){
+             stack1.push(x);
+         }
+         
+         public int dequeue(){ //stack2 acts as reverse stack for stack1, stack2 always holds top element for pop operation
+            if(stack1.isEmpty() && stack2.isEmpty()) 
+              print("Stack underflow");
+              return -1;
+            else if(stack1.isEmpty()){
+              return stack2.pop();
+            }
+            else if(stack2.isEmpty()){
+              while(stack1.isEmpty())
+              {
+                 stack2.push(stack1.pop());
+              }
+              return stack2.pop();
+            }
+         }
+     }
 Approach3: Using a user Stack and function call stack
 enqueue:
 push the element to stack1 -O(1)
 Dequeue
 Using function call stack we can store the current top element of the function call and recursively call the dequeue operation till we hit element at the bottom of stack and pop that element and return. Push the current call's top element back into stack1. - O(n) ( as we pop and push n-1 elements)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5. Implement Stack using Queues:
 Ask question : what are the elements in stack? Integer
