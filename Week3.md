@@ -81,7 +81,7 @@ Method1:
 		int spaceCnt = 0;
 		int index = 0;
 		char[] ch = str.toCharArray();
-		for (int i = 0; i < truelen; i++) {
+		for (int i = 0; i < truelen; i++) {//O(N) N is truelen
 			if (ch[i] == ' ')
 				spaceCnt++; // count the space
 		}
@@ -89,7 +89,7 @@ Method1:
 		// length is tripled by space count
 		if (truelen < ch.length)
 			ch[truelen] = '\0';
-		for (int i = truelen - 1; i >= 0; i--) {
+		for (int i = truelen - 1; i >= 0; i--) {//O(M) M is index
 			if (ch[i] == ' ') {
 				ch[index - 1] = '0';
 				ch[index - 2] = '2';
