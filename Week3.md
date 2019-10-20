@@ -31,3 +31,18 @@ cannot use additional data structures?*
     return true; 
    } 
 ```
+
+*2. Given two strings, write a method to decide if one is a permutation of the other?*
+*Clarifications & assumptions:*
+1. If the strings are case-sensitive. YES
+2. White-space counts as a character "she    " not same as "she"
+
+*Method 1: Sort and check*
+Permutation means, two strings has same set of character but in different order.
+Strings must be of equal length.
+So sorting both strings and checking whether their sorted strings are equal. O(nlogn)+O(nlogn).
+
+*Method 2: Count the occurence of character in one string and check with other:*
+Assumption:
+	- size of the character set is assumed to be ASCII (128 characters).
+
