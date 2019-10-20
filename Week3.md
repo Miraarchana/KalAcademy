@@ -61,4 +61,46 @@ boolean checkPermutation(String str1, String str2) {
 }
 ```
 **3. Write a method to replace all spaces in a string with ‘%20’**
+Hint:
+```reference
+A common approach in string manipulation problems is to edit the string starting from the end and working
+backwards. This is useful because we have an extra buffer at the end, which allows us to change characters
+without worrying about what we're overwriting.
+```
+Clarification:
+The input string has enough space for characters to be added. 
+
+Method1:
+1. Find the no.of space in the string. ignore the spaces at the end.
+2. calculate the new length string with extra-space for ('20' as '%' can fit in ' ' that already exist in the string)
+3. Start filling the char array from end.
+   * If char at index == ' ' , start replacing next 3 indexes with '0','2','%' and decrement index by 3
+   * else replace the ```char[index-1]``` to ```char[i]``` and decrement index by 1
+```java
+	static void replaceSpace(String str, int truelen) {
+		int spaceCnt = 0;
+		int index = 0;
+		char[] ch = str.toCharArray();
+		for (int i = 0; i < truelen; i++) {
+			if (ch[i] == ' ')
+				spaceCnt++; // count the space
+		}
+		index = truelen + (spaceCnt * 2);// calculate the index for o/p
+		// length is tripled by space count
+		if (truelen < ch.length)
+			ch[truelen] = '\0';
+		for (int i = truelen - 1; i >= 0; i--) {
+			if (ch[i] == ' ') {
+				ch[index - 1] = '0';
+				ch[index - 2] = '2';
+				ch[index - 3] = '%';
+				index = index - 3;
+			} else {
+				ch[index - 1] = ch[i];
+				index--;
+			}
+		}
+	}
+```
+
 
