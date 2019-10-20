@@ -103,4 +103,69 @@ Method1:
 	}
 ```
 
+**4.Implement a method to perform a basic string compression using the counts of
+repeated characters. For example, the string aabccccaaa would become a2b1c4a3. If the
+compressed string would not become smaller than the original string, your method
+should return the original string**
+
+```java
+	static String compress(String str) {
+		int currentConsecutive =0; //keeps track of consecutive same characters
+		StringBuilder compress = new StringBuilder();//result 
+			currentConsecutive++;
+			if((i+1 >=str.length())|| str.charAt(i+1)!= str.charAt(i)) { //if next char is different
+				compress.append(str.charAt(i));
+				compress.append(currentConsecutive);
+				currentConsecutive =0;
+			}
+		}
+		return compress.length() < str.length() ? compress.toString():str;	
+	}
+```
+Worst case: if compressed string is greater than given string, the compressed string is of no use.
+Checking the length prior is another example, but the downside is additional loop to check the length and duplicate code.
+
+**5. Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
+column are set to 0**
+
+Algorithm:
+1. Iterate through rows and column. 
+2. Check whether the nums[i][j] ==0,
+	* If true, set the corresponding row's first index to 0 and corres. column's first index to 0.(marks that this row and column has a 0, used for nullifying).
+	* else continue.
+3. Nullify rows that has first index 0.
+4. Nullify columns that has first index 0.
+5. return the modified matrix.
+
+```java
+	int[][] nullifyRowsColumns(int[][] nums){
+		for(int i=0; i<nums.length;i++) { //scan through all elements O(M*N)time
+			for(int j=0; j<nums[0].length;j++) {
+				if(nums[i][j]==0) {
+					nums[i][0]= 0;
+					nums[0][j]= 0;
+				}else if(nums[i][0]==0 || nums[0][j] == 0){
+					nums[i][j] = 0;
+				}
+			}
+		}
+		//nullifying rows
+		int z=0;
+		for(int i=0;i<nums.length;i++) { 
+			if(nums[i][0]==0){
+				while(z<=nums[0].length-1)
+					nums[i][z++] = 0;
+			}
+		}
+		//nullifying columns
+		int y=0;
+		for(int j=0;j<nums[0].length;j++) {
+			if(nums[0][j]==0){
+				while(y<=nums.length-1)
+					nums[y++][j] = 0;
+			}
+		}
+		return nums;
+	}
+```
 
