@@ -43,22 +43,22 @@ So sorting both strings and checking whether their sorted strings are equal. O(n
 Time complexity : O(n) 
 Assumption:
 	- size of the character set is assumed to be ASCII (128 characters).
-	```java
-	boolean checkPermutation(String str1, String str2) {
-		if(str1.length() != str2.length())
+```java
+boolean checkPermutation(String str1, String str2) {
+	if(str1.length() != str2.length())
+		return false;
+	char[] ch1 = str1.toCharArray();
+	int[] indexes = new int[128];//ASCII charset 
+	for(char c:ch1)
+		indexes[c]++;//increment the value at index of that char
+	char[] ch2 = str2.toCharArray();
+	for(char c: ch2) {
+		indexes[c]--;//decrement the value at index of that char
+		if(indexes[c]<0)
 			return false;
-		char[] ch1 = str1.toCharArray();
-		int[] indexes = new int[128];//ASCII charset 
-		for(char c:ch1)
-			indexes[c]++;//increment the value at index of that char
-		char[] ch2 = str2.toCharArray();
-		for(char c: ch2) {
-			indexes[c]--;//decrement the value at index of that char
-			if(indexes[c]<0)
-				return false;
-		}
-		return true;
 	}
-	```
+	return true;
+}
+```
 **3. Write a method to replace all spaces in a string with ‘%20’**
 
