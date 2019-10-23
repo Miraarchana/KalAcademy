@@ -1,3 +1,5 @@
+**String**
+________________________________________________________________________________________________________________________________________
 **1. Implement an algorithm to determine if a string has all unique characters. What if you
 cannot use additional data structures?**
 
@@ -169,3 +171,47 @@ Algorithm:
 	}
 ```
 
+
+**7.Given a string S, find the longest palindromic substring in S.
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.**
+
+*Method 1: Brute Force*
+To check each substring, outer two loops to fix the edges of substring and inner loop to check whether the string within that range is palindromic. O(n^3) time complexity approach.
+
+*Method 2: Expand from center*
+Using two loops, with outer loop determining the center points for a palindromic sequence and inner loop to expand and check from that center selected.
+	- for selecting center for odd length string, expand from the character at i.
+	- for checking even length string, expand between i and i+1 index.
+```java
+	String longestpalindromicSS(String str){//o(n)
+		if(str == null|| str.length()<=0)
+			return "";
+		String longest = str.substring(0,1);
+		for(int i=0; i<str.length();i++) {
+			String temp1 = expand(str,i,i);//this is for odd length "abdba"
+			String temp2 = expand(str, i, i+1);//this is to find mirror between even length palindromic sequence "abba"
+			if(temp1.length() >longest.length())
+				longest = temp1;
+			if(temp2.length() > longest.length())
+				longest = temp2;
+		}
+		return longest;
+	}
+	
+	String expand(String str, int begin, int end) {//o(n)
+		while(begin >=0 && end <str.length() && str.charAt(begin)== str.charAt(end)) {
+			begin--;
+			end++;
+		}
+		if(begin ==-1 && end >str.length()) {//if entire string is a palindromic.to avoid index out of bound exception.
+			return str.substring(begin+1);
+		}
+		return str.substring(begin+1,end);
+	}
+```
+This approach takes O(n^2) time complexity and O(1) space.
+
+*Method3: Mancher's algorithm*
+This is a linear time algorithm.
