@@ -215,3 +215,30 @@ This approach takes O(n^2) time complexity and O(1) space.
 
 *Method3: Mancher's algorithm*
 This is a linear time algorithm.
+
+----------------------------------------------------------------------------------------------------------------------------------------*8.Given a string, recursively remove adjacent duplicate characters from string. The output
+string should not have any adjacent duplicates. See following examples.
+Input: azxxzy
+Output: ay
+First "azxxzy" is reduced to "azzy". The string "azzy" contains duplicates, so it is further
+reduced to "ay".
+Input: caaabbbaacdddd
+Output: Empty String
+Input: acaaabbbacdddd
+Output: acac*
+
+*Method1:using Stack*
+- Keep pushing character till the top of the stack is different
+- pop the top element if the current character is equal to stack top element and discard
+- Pop all the elements and keep appending the result to the result string.
+
+*Method2:Traverse from leftmost element with window size 2*
+Algorithm:
+1. If the string is empty returns ""
+2. If the next index of the character to be checked for duplicate occurrence an index before has exceeded the length string, return thr string processed so far
+3. If the next index is the lower bound of length, increment x
+4. IF the string length is more than 1, check for the adjacent index for duplicate
+	- If char at adjacent indices are equal and length of string is 2 return empty string.
+	- else if adjacent indices are equal and  length of th string is greater than 2, partition the string by removing the adjacent indices and recur checking duplicate characters for remaining string
+5. Else if string length is greater than 2 and adjacent indices elements are different recur checking duplicate characters for next index
+6. Else return the string (as length equal to 1).
