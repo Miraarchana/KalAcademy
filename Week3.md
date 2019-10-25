@@ -242,3 +242,42 @@ Algorithm:
 	- else if adjacent indices are equal and  length of th string is greater than 2, partition the string by removing the adjacent indices and recur checking duplicate characters for remaining string
 5. Else if string length is greater than 2 and adjacent indices elements are different recur checking duplicate characters for next index
 6. Else return the string (as length equal to 1).
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+*11.Given two strings ‘X’ and ‘Y’, find the length of the longest common substring.*
+
+```java
+	//If the characters for i n j in current str1 n str2 is same, refer previous character's lcs length stored in i-1 j-1 indices and increment by 1.
+	//else set lcs[i][j] to 0.
+	//we store the length of all common substrings for all substrings of str1 and str2 and store its length in m+1*n+1 matrix.
+	//this will be execute in time complexity O(m*n) m is len of str1, n is len str2
+	
+	static int findLCS(char[] s1, char[] s2, int m, int n) {
+		int[][] lcs = new int[m+1][n+1];//cells hold the substring length, created with buffer row n column
+		int result = 0;//track the max length
+		StringBuffer substring = new StringBuffer();
+		for(int i =0 ; i<=m ;i++) {
+			for(int j=0; j<=n; j++) {
+				if(i ==0 || j==0)
+					lcs[i][j]=0;
+				else if(s1[i-1] == s2[j-1])
+				{
+					lcs[i][j] = lcs[i-1][j-1]+1;
+					if(result < lcs[i][j]) {
+						substring.append(s1[i-1]);//to print the string
+						
+					}
+					result=  Math.max(result, lcs[i][j]);
+					
+				}else
+					lcs[i][j]=0;
+			}
+		}
+		System.out.println(substring.toString());
+		
+		return result;
+	}
+```
+----------------------------------------------------------------------------------------------------------------------------------------
+
