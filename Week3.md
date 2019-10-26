@@ -1,4 +1,14 @@
 **String**
+*Difference between substring and subsequence in String*
+Substring:
+	- each substring will be a subarray of the given string(the characters are contiguous)
+	- for a length of n, n*(n+1)/2 substrings are possible
+		eg., geek -> g,e,e,k,ge,ee,ek,gee,eek,geek
+Subsequence:
+	- each subsequence is not a subarray of the given string(but the characters in subsequence follow the same order as in original string)
+	- for a length on n, 2^n-1, subsequences are possible
+		eg., geek -> g,e,e,k,ge,ge,gk,ee,ek,ek,gee,gek,gek,eek,geek
+		
 ________________________________________________________________________________________________________________________________________
 **1. Implement an algorithm to determine if a string has all unique characters. What if you
 cannot use additional data structures?**
@@ -281,3 +291,84 @@ Algorithm:
 ```
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+*12.Given two string str1 and str2, find the shortest string that has both str1 and str2 as
+subsequences.
+Examples:
+Input: str1 = “geek”, str2=”eke”
+Output: “geeke”
+Input: str1 = “AGGTAB”, str2=”GXTXAYB”
+Output: “AGXGTXAYB”
+*
+
+Method : Using DP find the Longest Common Subseqence like in Problem 6
+and back track to find the Shortest string that has characters of both strings and its lcs once. Time complexity : O(MN), Space:O(MN) 
+
+```java
+String findShortestSuperseq(char[] s1, char[] s2, int m , int n) {
+
+		int[][] lcs = new int[m+1][n+1];//cells hold the substring length, created with buffer row n column
+		int result = 0;//track the max length
+		StringBuffer subsequence = new StringBuffer();
+		String superseq ="";
+		for(int i =0 ; i<=m ;i++) {
+			for(int j=0; j<=n; j++) {
+				if(i ==0 || j==0)
+					lcs[i][j]=0;
+				else if(s1[i-1] == s2[j-1])
+				{
+					lcs[i][j] = lcs[i-1][j-1]+1;
+					if(result < lcs[i][j]) {
+						subsequence.append(s1[i-1]);
+						
+					}
+					result=  Math.max(result, lcs[i][j]);
+					
+				}else
+					lcs[i][j]=Math.max(lcs[i-1][j], lcs[i][j-1]);
+			}
+		}
+		System.out.println(subsequence.toString());
+		
+		//Trace back to find the Shortest string which has both strings subsequence
+		int i=m, j=n;
+		// geek	    eke
+		//^        ^ 
+		//   i=0   j=0
+		// geeke
+		//j  |0 1 2 3
+		//i  |# e k e 
+		//------------
+		//0# |0	0 0 0
+		//1g |0 0 0 0
+		//2e |0 1 1 1
+		//3e |0 1 1 2
+		//4k |0 1 2 2
+		
+		while(i>0 && j>0) {
+			if(s1[i-1] == s2[j-1]) {//if both characters are same, add that character to supersequence
+				superseq=s1[i-1]+superseq;
+				i--;
+				j--;
+			}
+			else if(lcs[i-1][j] < lcs[i][j-1]) {//if not equal character, this element must be max of previous lcs
+				superseq = s1[i-1]+superseq;//
+				i--;
+			}
+			else {
+				superseq = s2[j-1]+superseq;
+				j--;
+			}
+		}
+		
+		while(i>0) {//while s1 still has char, s2 exhausted
+			superseq = s1[i-1]+superseq;
+			i--;
+		}
+		while(j>0) {//while s2 still has char, s1 exhausted
+			superseq = s2[j-1]+superseq;
+			j--;
+		}
+		System.out.println("Shortest supersequence between two strings is::"+superseq);
+		return superseq;x`x`
+	}
+```
