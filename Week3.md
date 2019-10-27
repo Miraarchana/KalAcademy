@@ -369,6 +369,45 @@ String findShortestSuperseq(char[] s1, char[] s2, int m , int n) {
 			j--;
 		}
 		System.out.println("Shortest supersequence between two strings is::"+superseq);
-		return superseq;x`x`
+		return superseq;
+	}
+```
+*13.Given a string, find length of the longest substring with all distinct characters. For
+example, for input "abca", the output is 3 as "abc" is the longest substring with all
+distinct characters*
+Algorithm: O(n) time complexity
+1. start constructing the result string
+2. if current char is not yet a part of result string, add it to the result string
+	- if current char is in result string and its index is next to the last character in the result string, max_str is calculated and result is reset to track new substring
+		- assigning the current substring start as charAt i.
+	- If current char is present but its index is not the last char in result string,  max_str is calculated and result is reset to track new substring new substring starts by excluding the charAt(i).
+```java
+	//aabbabca- abc
+	//      ^
+	//result = abc
+	//max_str= ba
+	int findLCSubstringDistinct(String str) {
+		int max_str = 1;//keeps track of max len string so far
+		String result =""+ str.charAt(0);//start constructing the result string
+		for(int i =1; i<str.length();i++) {
+			if(result.indexOf(str.charAt(i))==-1) {//if current char is not yet a part of result string, add it to the result string
+				result= result+ str.charAt(i);
+			}else {
+				if(result.indexOf(str.charAt(i))== result.length()-1) //if current char is in result string and its index is next to the last character in the result string, max_str is calculated and result is reset to track new substring
+				{
+					if(max_str< result.length())
+						max_str = result.length();
+					result=""+str.charAt(i);//assigning the current substring start as charAt i.
+				}else {
+					if(max_str < result.length())
+						max_str = result.length();
+					result = result.substring(result.indexOf(str.charAt(i))+1, result.length())+str.charAt(i);
+					//If current char is present but its index is not the last char in result string,  max_str is calculated and result is reset to track new substring new substring starts by excluding the charAt(i).
+				}	
+			}
+		}
+		if(max_str<result.length())
+			max_str = result.length();
+		return max_str;
 	}
 ```
