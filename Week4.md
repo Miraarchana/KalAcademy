@@ -96,4 +96,76 @@ int detectLoop(LinkNode nd){
 ```
 *Time complexity: O(N) where N is the number of nodes visited. --doubt*
 
+*3. Clone a linked list with a random pointer.*
+
+Method1: O(N) time and O(N) space
+2- pass algorithm
+- Constructing a map for current node and newly created clone node
+- Constant access to map to get the curr node clone and its pointers.
+```java
+LinkNode cloneLL(LinkNode nd1) {
+		LinkNode head = nd1;
+		LinkNode cloneHead = null;//inorder to return constructed clone
+		LinkNode curr = head;
+		//clone mapping - O(n) time and O(n) space
+		Hashtable<LinkNode,LinkNode> ht = new Hashtable<LinkNode, LinkNode>();
+		while(curr!=null) {
+			LinkNode newNode = new LinkNode(curr.value);
+			if(curr == head)
+				cloneHead = newNode;//inorder to return constructed clone
+			ht.put(curr,newNode );
+			curr = curr.next;
+		}
+		//construct clone -O(1) access time
+		curr = head;
+		while(curr!=null) {
+			LinkNode cloneCurr = ht.get(curr);
+			if(curr.next!=null)
+				cloneCurr.next =ht.get(curr.next);
+			if(curr.rand!=null)
+				cloneCurr.rand = ht.get(curr.rand);
+			curr = curr.next;
+		}
+		
+		return cloneHead;
+	}
+```
+Method 2: O(1) space
+3 pass method
+
+```java
+LinkNode cloneWithConstantSpace(LinkNode head){
+		//first pass - map clone to original list
+		LinkNode curr = head;
+		while(curr!= null) {
+			LinkNode temp = curr.next;
+			LinkNode clone = new LinkNode(curr.value);
+			curr.next =clone ;
+			clone.next = temp;
+			curr = curr.next.next;
+		}
+		//second pass- map rand pointers.
+		curr = head;
+		while(curr!= null) {
+			if(curr.rand!=null)
+				curr.next.rand = curr.rand.next;
+			curr = curr.next.next;
+		}
+		//third pass - restore the original list
+		LinkNode dummyHead = new LinkNode(0);
+		LinkNode cloneTail = dummyHead;
+		curr = head;
+		while(curr!= null) {
+			LinkNode copy = curr.next; //this is to retain pointer to clone
+			cloneTail.next = copy;//append clone to tail of clone list
+			cloneTail = copy;//move clone tail to newly appended node
+			if(curr.next!= null) {
+				curr.next = curr.next.next;
+			}	
+			curr= curr.next;
+		}
+		return dummyHead.next;
+	}
+```
+
 
