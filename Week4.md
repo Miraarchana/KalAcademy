@@ -45,7 +45,8 @@ Approach2: Using call Stack O(N) time, O(N) if call stack is considered.
   ```
 *2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets.*
 
-```1-->2-->3-->4-->5-----
+```
+   1-->2-->3-->4-->5-----
            |		|
  	   <-------6<----
 ```
