@@ -253,3 +253,20 @@ LinkNode removeDupNoBuffer(LinkNode head) {
 	}
 ```
 
+*5.Implement an algorithm to find the kth to the last element of a singly linked list*
+-algorithm
+- copy the next element value to the node to be deleted
+```java
+	void deleteNode(LinkNode nd) {
+		LinkNode curr = nd.next;
+		if(curr!= null) {
+			nd.value = curr.value;
+			nd.next = curr.next;
+		}else {
+			//if the node is the end of the list
+			//assign a dummy node to the list
+			nd.value = 0;
+			nd.next = null;
+		}
+	}
+```
