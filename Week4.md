@@ -358,3 +358,36 @@ LinkNode partitionList(LinkNode head, int x) {
 		return recurHead;
 	}
 ```
+
+*9.*
+
+Psuedocode:
+1->2->3->4->5
+
+find number of nodes
+initialize a root node to null
+initialize a currRoot to null
+initialize an int value to 1
+curr = head
+
+while(curr!=null){
+Node currNd= new Node(curr.val);
+if(currRoot == null)
+	currRoot = currNd;
+else if(i == mid)
+	currNd.left = currRoot;
+	root = currNd;
+else
+     if(currNd.val>currRoot.val)
+	currRoot.right = currNd;
+	currRoot = currNd;
+     else
+	currNd.left = currRoot;
+	currRoot=currNd;
+curr = curr.next;
+i++;
+}
+return root;
+}
+
+
