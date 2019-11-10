@@ -309,4 +309,52 @@ LinkNode partitionList(LinkNode head, int x) {
 		return smH.next;
 	}
 ```
+*8.*
+```java
 
+	/*
+	 * 3 pointer approach
+	 * curr, prev, next
+	 * -Assign curr.next to nxt pointer and change curr.nxt to point prev node
+	 * - curr node is made prev node and curr node is my next node
+	 * p,n	 c
+	 * null->10->11->3->4->5->null
+	 *       p  c   n
+	 * null<-10 11->3->4->5->null
+	 *           p  c  n
+	 * null<-10<-11 3->4->5->null
+	 *               p c  n
+	 * null<-10<-11<-3 4->5->null
+	 * 					p c	 n
+	 * null<-10<-11<-3<-4 5->null
+	 *                     p c
+	 * null<-10<-11<-3<-4<-5
+	 * return p
+	 */
+	static LinkNode reverseIterative(LinkNode hd) {
+		LinkNode prev = null;
+		LinkNode nxt = null;
+		LinkNode curr = hd;
+		while(curr!=null) {
+			nxt =curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = nxt;
+		}
+		return prev;
+	}
+	
+	static LinkNode recurHead;
+	static LinkNode reverseRecursive(LinkNode curr, LinkNode prev) {
+		if(curr.next == null){
+			//we have reached the end of the list
+			recurHead = curr;//tail of the list is the head of recurse list
+			curr.next = prev;//reverse the link between tail and prev element
+			return recurHead;
+		}
+		LinkNode nxt = curr.next;//get hold of next element in list before removing the pointer between curr and curr.next
+		curr.next = prev;//reverse the link between curr and prev element
+		reverseRecursive(nxt, curr);//call reverse of new curr(nxt) and new prev(curr) pointers.
+		return recurHead;
+	}
+```
