@@ -212,4 +212,44 @@ LinkNode removeDupNoBuffer(LinkNode head) {
 		return head;
 	}
 ```
+*5.Implement an algorithm to find the kth to the last element of a singly linked list*
+
+```java
+/*
+	 * Use two pointers.
+	 * Move fast pointer k steps away from head
+	 * Move fast and slow one step at a time. when fast reaches null, exit loop
+	 * return slow pointer value as the kth element to end.
+	 * O(n) time complexity with constant space O(1)
+	 */
+	private static int findKthIterative(LinkNode nd1, int i) {
+		LinkNode slow = nd1;
+		LinkNode fast = nd1;
+		while(i > 0) {
+			fast = fast.next;
+			i--;
+		}
+		while(fast !=null) {
+			fast = fast.next;
+			slow = slow.next;
+		}
+		return slow.value;
+	}
+	
+	/*
+	 * recursively call each node with a counter incremented from bottom up.
+	 * if the element's order from end is equal to i, 
+	 * the element is printed as kth element from end.
+	 * O(n) time. O(N) space if call stack is considered.
+	 */
+	private static int findKthRecursive(LinkNode nd1, int i) {
+		if(nd1 == null)
+			return 0; //base condition to windup recursive call
+		int k = findKthRecursive(nd1.next, i)+1;
+		if(i == k ) {
+			System.out.println("kth element" + nd1.value);	
+		}
+		return 0;
+	}
+```
 
