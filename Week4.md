@@ -168,4 +168,48 @@ LinkNode cloneWithConstantSpace(LinkNode head){
 	}
 ```
 
+*4. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed?*
+Method1: with additional memory 
+- Create a HashTable and keep adding elements to it. Prev and current pointer is tracked
+- If element is already present in the ht, current is removed
+-O(N) time and O(N) space
+
+Method2 : Without additional memory
+- Use four pointers
+```
+11-->12-->11-->14-->10-->12
+^     ^
+hd  curr
+runner
+prev
+```
+- Till runner is equal to curr, check for duplicates.
+- If dup is found remove the curr node from list by assigning curr.nxt to prev.next
+- else move prev to prev.nxt and curr to curr.nxt
+- O(N^2) time complexity at worst case.
+
+```java
+LinkNode removeDupNoBuffer(LinkNode head) {
+		if(head == null)
+			return null;
+		LinkNode prev = head; //to hold the previous reference to which the next element after remoing dup to be added
+		LinkNode curr = head.next;//element for which, we have to run from head to check if it is a dup.
+		while(curr!= null) {
+			LinkNode runner = head;		 // reference to run from start of list till current check if curr is a dup of already existing value
+			while(!(runner == curr)) {
+				if(runner.value == curr.value) {
+					curr = curr.next;
+					prev.next = curr;
+					break;
+				}
+				runner = runner.next;
+			}
+			if(runner == curr) {
+				prev = prev.next;
+				curr = curr.next;
+			}
+		}
+		return head;
+	}
+```
 
