@@ -253,12 +253,12 @@ LinkNode removeDupNoBuffer(LinkNode head) {
 	}
 ```
 
-*5.Implement an algorithm to find the kth to the last element of a singly linked list*
+*6.Implement an algorithm to delete a node a singly linked list, given only access to that node.*
 -algorithm
 - copy the next element value to the node to be deleted
 ```java
 	void deleteNode(LinkNode nd) {
-		LinkNode curr = nd.next;
+		LinkNode curr = nd.next;v
 		if(curr!= null) {
 			nd.value = curr.value;
 			nd.next = curr.next;
@@ -270,3 +270,43 @@ LinkNode removeDupNoBuffer(LinkNode head) {
 		}
 	}
 ```
+
+*7.Write code to partition a linkedlist around a value x, such that all nodes less than x come before all nodes great than or equal to x.*
+```java
+LinkNode partitionList(LinkNode head, int x) {
+		if(head==null) return null;
+		LinkNode curr = head; //to track the current element in list
+		LinkNode smH = new LinkNode(0);//small head is a dummy node
+		LinkNode smT = smH;//small tail is also set to dummy node
+		LinkNode lgH = new LinkNode(0);
+		LinkNode lgT = lgH;
+		LinkNode eqH= new LinkNode(0);
+		LinkNode eqT = eqH;
+		
+		while(curr!= null) {
+			if(curr.value == x) {
+				//append to eqT
+				eqT.next = curr;
+				curr=curr.next;
+				eqT = eqT.next;
+			}
+			else if(curr.value >x) {
+				//append to lgT
+				lgT.next = curr;
+				curr=curr.next;
+				lgT = lgT.next;
+			}else {
+				//append to smT
+				smT.next = curr;
+				curr=curr.next;
+				smT = smT.next;
+			}
+		}
+		
+		//append equal list to small and large list to equal tail
+		smT.next= eqH.next;
+		eqT.next = lgH.next;
+		return smH.next;
+	}
+```
+
