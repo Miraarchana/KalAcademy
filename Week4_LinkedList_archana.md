@@ -13,7 +13,10 @@ Linked List:
 6. Implement an algorithm to delete a node a singly linked list, given only access to that node. 
 
 7. Write code to partition a linkedlist around a value x, such that all nodes less than x come before all nodes great than or equal to x.   
+https://youtu.be/Oll5G_tIaDU
+
 8. Reverse a linked list – iteratively and recursively 
+https://youtu.be/JBN9S6LKylo
 
 9. Given a singly linked list which has data sorted in ascending order, construct a balanced BST. 
 
