@@ -325,7 +325,7 @@ LinkNode partitionList(LinkNode head, int x) {
 	 * null<-10<-11 3->4->5->null
 	 *               p c  n
 	 * null<-10<-11<-3 4->5->null
-	 * 					p c	 n
+	 * 		 p c	 n
 	 * null<-10<-11<-3<-4 5->null
 	 *                     p c
 	 * null<-10<-11<-3<-4<-5
@@ -359,7 +359,7 @@ LinkNode partitionList(LinkNode head, int x) {
 	}
 ```
 
-*9.*
+*9. Given a singly linked list which has data sorted in ascending order, construct a balanced BST.*
 
 Psuedocode:
 1->2->3->4->5
