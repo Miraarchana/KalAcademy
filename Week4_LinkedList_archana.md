@@ -1,6 +1,23 @@
 Linked List:
 
-1. Write an algorithm to determine if a linkedlist is a palindrome 2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets. 3. Clone a linked list with a random pointer. 4. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed? 5. Implement an algorithm to find the kth to the last element of a singly linked list 6. Implement an algorithm to delete a node a singly linked list, given only access to that node. 7. Write code to partition a linkedlist around a value x, such that all nodes less than x come before all nodes great than or equal to x.  8. Reverse a linked list – iteratively and recursively 9. Given a singly linked list which has data sorted in ascending order, construct a balanced BST. 10. Given a singly linked list, find middle of the linked list. For example, if given linked list is 1->2->3>4->5 then output should be 3.  If there are even nodes, then there would be two middle nodes, we need to print second middle element. For example, if given linked list is 1->2->3->4->5->6 then output should be 4. 
+1. Write an algorithm to determine if a linkedlist is a palindrome 
+
+2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets. 
+
+3. Clone a linked list with a random pointer. 
+
+4. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed? 
+
+5. Implement an algorithm to find the kth to the last element of a singly linked list 
+
+6. Implement an algorithm to delete a node a singly linked list, given only access to that node. 
+
+7. Write code to partition a linkedlist around a value x, such that all nodes less than x come before all nodes great than or equal to x.   
+8. Reverse a linked list – iteratively and recursively 
+
+9. Given a singly linked list which has data sorted in ascending order, construct a balanced BST. 
+
+10. Given a singly linked list, find middle of the linked list. For example, if given linked list is 1->2->3>4->5 then output should be 3.  If there are even nodes, then there would be two middle nodes, we need to print second middle element. For example, if given linked list is 1->2->3->4->5->6 then output should be 4. 
  
 11. Given a singly linked list, rotate the linked list counter-clockwise by k nodes. Where k is a given positive integer smaller than or equal to length of the linked list. For example, if the given linked list is 10->20->30->40->50->60 and k is 4, the list should be modified to 50->60->10->20->30>40. 
  
