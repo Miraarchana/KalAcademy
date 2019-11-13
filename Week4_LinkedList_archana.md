@@ -21,6 +21,7 @@ https://youtu.be/JBN9S6LKylo
 9. Given a singly linked list which has data sorted in ascending order, construct a balanced BST. https://youtu.be/UJliBkQFKO8
 
 10. Given a singly linked list, find middle of the linked list. For example, if given linked list is 1->2->3>4->5 then output should be 3.  If there are even nodes, then there would be two middle nodes, we need to print second middle element. For example, if given linked list is 1->2->3->4->5->6 then output should be 4. 
+ https://youtu.be/fZAirRkKbbI
  
 11. Given a singly linked list, rotate the linked list counter-clockwise by k nodes. Where k is a given positive integer smaller than or equal to length of the linked list. For example, if the given linked list is 10->20->30->40->50->60 and k is 4, the list should be modified to 50->60->10->20->30>40. 
  
