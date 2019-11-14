@@ -24,8 +24,10 @@ https://youtu.be/JBN9S6LKylo
  https://youtu.be/fZAirRkKbbI
  
 11. Given a singly linked list, rotate the linked list counter-clockwise by k nodes. Where k is a given positive integer smaller than or equal to length of the linked list. For example, if the given linked list is 10->20->30->40->50->60 and k is 4, the list should be modified to 50->60->10->20->30>40. 
+https://youtu.be/OrxhAchNO_k
  
 12. Given a linked list, write a function to reverse every k nodes (where k is an input to the function).If a linked list is given as 1->2->3->4->5->6->7->8->NULL and k = 3 then output will be 3->2->1->6->5->4->8->7->NULL. 
+ https://youtu.be/m1tyk_YSTRc
  
 13. Given a linked list, check if the linked list has a loop. Linked list can contain self loop. 
  
