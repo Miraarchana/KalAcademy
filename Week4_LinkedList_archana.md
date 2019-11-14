@@ -3,12 +3,13 @@ Linked List:
 1. Write an algorithm to determine if a linkedlist is a palindrome 
 
 2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets. 
-
+https://youtu.be/7-x2VY1u-f4
 3. Clone a linked list with a random pointer. 
 
 4. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed? 
 
 5. Implement an algorithm to find the kth to the last element of a singly linked list 
+https://youtu.be/k9WhaiAamS8
 
 6. Implement an algorithm to delete a node a singly linked list, given only access to that node. 
 
@@ -30,10 +31,13 @@ https://youtu.be/OrxhAchNO_k
  https://youtu.be/m1tyk_YSTRc
  
 13. Given a linked list, check if the linked list has a loop. Linked list can contain self loop. 
+https://youtu.be/rs4RjlePjEs
  
 14. Given a linked list, the task is to find the n'th node from the end.  
+https://youtu.be/vdpnJTODMaU
  
 15. Given two linked lists sorted in ascending order. Merge them in-place and return head of the merged list.   For example, if first list is 10->20->30 and second list is 15->17, then the result list should be 10->15->17->20->30. It is strongly recommended to do merging in-place using O(1) extra space. 
+
  
 16. Given a Linked List where every node represents a linked list and contains two pointers of its type: 
 (i) a next pointer to the next node 
@@ -59,6 +63,8 @@ and after flattening it, the sorted linked list looks like:
  
 The  node structure has 3 fields as mentioned. A next pointer, a bottom pointer and a data part. 
  
-17. Given a singly linked list, write a function to swap elements pairwise. For example, if the linked list is 1->2->3->4->5 then the function should change it to 2->1->4->3->5, and if the linked list is 1->2->3->4->5->6 then the function should change it to 2->1->4->3->6->5. 18. Given two numbers represented by two lists, write a function that returns sum list. The sum list is list representation of addition of two input numbers. Suppose you have two linked list 5->4 ( 4 5 )and 5->4->3( 3 4 5) you have to return  a resultant linked list 0->9->3 (3 9 0). 
+17. Given a singly linked list, write a function to swap elements pairwise. For example, if the linked list is 1->2->3->4->5 then the function should change it to 2->1->4->3->5, and if the linked list is 1->2->3->4->5->6 then the function should change it to 2->1->4->3->6->5. 
+
+18. Given two numbers represented by two lists, write a function that returns sum list. The sum list is list representation of addition of two input numbers. Suppose you have two linked list 5->4 ( 4 5 )and 5->4->3( 3 4 5) you have to return  a resultant linked list 0->9->3 (3 9 0). 
  
 19. Given a singly linked list of integers, Your task is to complete the function isPalindrome that returns true if the given list is palindrome, else returns false. 
