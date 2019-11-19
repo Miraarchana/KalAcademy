@@ -1,6 +1,7 @@
 Linked List:
 
 1. Write an algorithm to determine if a linkedlist is a palindrome 
+https://youtu.be/9UrRaftgjhw
 
 2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets. 
 https://youtu.be/7-x2VY1u-f4
@@ -59,7 +60,6 @@ For Ex: Shown below is a given linked list
 and after flattening it, the sorted linked list looks like: 
  
  5->7->8->10->19->20->22->28->30->35->40->45->50 
-
  
 The  node structure has 3 fields as mentioned. A next pointer, a bottom pointer and a data part. 
 https://youtu.be/0UdkaBmMhCs
@@ -69,3 +69,4 @@ https://youtu.be/kFY2rgfC7Hk
 18. Given two numbers represented by two lists, write a function that returns sum list. The sum list is list representation of addition of two input numbers. Suppose you have two linked list 5->4 ( 4 5 )and 5->4->3( 3 4 5) you have to return  a resultant linked list 0->9->3 (3 9 0). 
  https://youtu.be/_3QRNN2DxsE
 19. Given a singly linked list of integers, Your task is to complete the function isPalindrome that returns true if the given list is palindrome, else returns false. 
+https://youtu.be/eZv1AyzjQew
