@@ -6,13 +6,14 @@ https://youtu.be/9UrRaftgjhw
 2. Write an algorithm to determine if a linkedlist is circular. FOLLOW UP: Determine where the circle meets. 
 https://youtu.be/7-x2VY1u-f4
 3. Clone a linked list with a random pointer. 
-
+https://youtu.be/A59d-F6ugXE
 4. Write code to remove duplicates from an unsorted linked list. Follow up: How would you solve it if temporary buffer is not allowed? 
-
+https://youtu.be/MBE_ECqV8fI
 5. Implement an algorithm to find the kth to the last element of a singly linked list 
 https://youtu.be/k9WhaiAamS8
 
 6. Implement an algorithm to delete a node a singly linked list, given only access to that node. 
+https://youtu.be/gSi9iOQxD7A
 
 7. Write code to partition a linkedlist around a value x, such that all nodes less than x come before all nodes great than or equal to x.   
 https://youtu.be/Oll5G_tIaDU
