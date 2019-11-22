@@ -18,3 +18,5 @@ Uses Recursive approach.
 2. Checking if identical runs through the entire T2 and T1 from the node that matches T2 root.
 Time complexity : O(m*n) worst case. m - number of nodes in T2. n - number of nodes in T1.
 Space complexity : o(n) for n recursive calls.
+
+![Image](https://github.com/Miraarchana/KalAcademy/blob/master/SubtreeOfAnotherTree.jpg)
