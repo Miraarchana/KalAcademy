@@ -35,3 +35,6 @@ s            x               y
 ```
 ![Image](https://github.com/Miraarchana/KalAcademy/blob/master/PathWithSumsPrint_1.png)
   
+  *Time Complexity: O(n) for running sum calculation where n is number of nodes in tree and O(h) for removing nodes till offset h is the height of tree. Worst case: balanced tree O(n+h), skewed tree o(2n).
+  Space complexity: O(h+h) for storing nodeOffset hashtable and currList.*
+  
