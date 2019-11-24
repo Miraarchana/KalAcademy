@@ -26,9 +26,11 @@ Space complexity : o(n) for n recursive calls.
 *4.Print all Path with Sum.*
 
 Hint: Find contiguous subsequence in array that sums up to a given number.
+
 <-----------RunningSumY------>
 <RunningSumX-><--targetsum--->
 |------------|---------------|
 s            x               y
+  
 ![Image](https://github.com/Miraarchana/KalAcademy/blob/master/PathWithSumsPrint.png)
   
