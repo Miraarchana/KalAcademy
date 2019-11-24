@@ -9,6 +9,7 @@ https://youtu.be/DCV8A9aVOPw
 https://youtu.be/O4000kPAaLA
 
 4. You are given a binary tree in which each node contains a value. Design an algorithm to print all paths which sum to a given value. Note that a path can start or end anywhere in the tree. 
+https://youtu.be/iLfkTekQ1fw
 
 5. Given a BST, create a linkedlist of all the nodes at each depth 
 
