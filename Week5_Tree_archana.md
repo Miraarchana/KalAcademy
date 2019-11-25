@@ -12,11 +12,32 @@ https://youtu.be/O4000kPAaLA
 https://youtu.be/iLfkTekQ1fw
 
 5. Given a BST, create a linkedlist of all the nodes at each depth 
+https://youtu.be/zmyC8VwRTw8
 
 6. Convert a BST into a doubly linkedlist.
+https://youtu.be/-S5NsYMGW3Q
+Note: I made a mistake while writing the recursive call in whiteboard the method call in the second method is helper().
+```java
+void helper(Node root){
+        if(root != null){
+            helper(root.left); //convertBSTToLL(root.left)
+            if(head == null){
+                head = root;
+                tail = root;
+            }else{
+                tail.right = root;
+                root.left = tail;
+                tail = root;
+            }
+            helper(root.right);
+        }
+ ```
 
 7. Determine if a binary tree is balanced 
+https://youtu.be/zuBnnbvydLU
 
 8. Given a sorted array, create a binary search tree with minimal height 
+https://youtu.be/G7UrLh9Ggzw
 
-9. Implement a function to check if a binary tree is a 
+9. Implement a function to check if a binary tree is a BST.
+https://youtu.be/XSQDJeI722U
